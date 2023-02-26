@@ -22,7 +22,7 @@ public class Main {
         arrayListAll.addAll(arrayList1);
 
         sortList(arrayListAll);
-
+//        printList(arrayListAll);
 
         do{
 
@@ -32,8 +32,7 @@ public class Main {
             System.out.println("Команда 2");
             printList(arrayList1);
 
-            System.out.println("Количество персонажей" + " " + Person.getPrCount());
-            System.out.println("Нажмите клавищу");
+            System.out.printf("Количество персонажей: %s Нажмите клавищу Enter", Person.getPrCount());
 
             scanner.nextLine();
 
@@ -136,7 +135,7 @@ public class Main {
         }
         if (group == 2) {
             for (int i = 0; i < a; i++) {
-                int per =  rnd.nextInt(4);
+                int per = rnd.nextInt(4);
                 switch (per) {
                     case 0:
                         Crossbowman crossbowman = new Crossbowman(getName(),sideXTeam2, columns);
@@ -187,7 +186,7 @@ public class Main {
             @Override
             public int compare(Person o1, Person o2) {
                 if(o1.getSpeed()==o2.getSpeed()) return (int) (o1.getHp() - o2.getHp());
-                else return o1.getSpeed() - o2.getSpeed();
+                else return o2.getSpeed() - o1.getSpeed();
             }
         });
     }

@@ -11,7 +11,7 @@ public abstract class Person implements GameInterface {
     protected int damageMin;
     protected int damageMax;
     protected float hp;
-    protected int maxHp;
+    protected float maxHp;
     protected int speed;
     public Vector2D position;
     public String state;
@@ -19,7 +19,7 @@ public abstract class Person implements GameInterface {
     static int prCount;
 
     public Person(String name, int attack, int def, int damageMin, int damageMax,
-                  float hp, int maxHp, int speed, int posX, int posY) {
+                  float hp, float maxHp, int speed, int posX, int posY) {
         this.name = name;
         this.attack = attack;
         this.def = def;
@@ -57,7 +57,7 @@ public abstract class Person implements GameInterface {
         return hp;
     }
 
-    public int getMaxHp() {
+    public float getMaxHp() {
         return maxHp;
     }
 
@@ -146,7 +146,7 @@ public abstract class Person implements GameInterface {
     protected void getDamage(float damage){
         hp -= damage;
         if (hp > maxHp) hp = maxHp;
-        if (hp < maxHp) state = "Die";
+        if (hp <= 0) state = "Die";
     }
     public void setData(int data){
     }

@@ -14,7 +14,7 @@ public abstract class Shooter extends Person{
     }
 
     public Shooter(String name, int attack, int def, int damageMin, int damageMax,
-                   float hp, int maxHp, int speed, int shot, int posX, int posY) {
+                   float hp, float maxHp, int speed, int shot, int posX, int posY) {
         super(name, attack, def, damageMin, damageMax, hp, maxHp, speed, posX, posY);
         this.shot = shot;
     }
@@ -29,8 +29,8 @@ public abstract class Shooter extends Person{
         if (state.equals("Die") || shot == 0) return;   // 3.1
         int target = findNearest(team2);                // 3.2
         float damage = (team2.get(target).def -attack > 0)?    // 3.3
-                damageMin : (team2.get(target).def -attack > 0)?
-                damageMax : (damageMin+damageMax)/2;
+                damageMin : (team2.get(target).def -attack < 0)?
+                damageMax : (damageMin + damageMax)/2;
         team2.get(target).getDamage(damage);    // происвоит опоненту
 
         // поиск фермара по getInfo и состяную state
